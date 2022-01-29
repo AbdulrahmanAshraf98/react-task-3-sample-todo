@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import './app.css'
 import Item from './Component/Listitem'
  class App extends Component {
    state={
