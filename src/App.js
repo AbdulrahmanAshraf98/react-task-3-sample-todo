@@ -7,18 +7,23 @@ import Item from './Component/Listitem'
    addTask=(e)=>{
     e.preventDefault();  
     const tasks=this.state.tasks;
-    let id=this.state.tasks.length+1;
+    let id=this.state.tasks.length;
     const task={
       id:id,
       value:e.target[0].value
     };
-    tasks.push(task)
-    this.setState({ tasks:tasks})
+    tasks.push(task);
+    this.setState({ tasks:tasks});
+    e.target[0].value="";
    }
    deleteTask=(e)=>{
-     const tasks=this.state.tasks;
-     tasks.length!=1?tasks.splice(e.target.parentElement.id-1,1):tasks.splice(0,1);
-     this.setState({ tasks:tasks})
+     let tasks=this.state.tasks;
+     tasks.length!=1?tasks.splice(e.target.parentElement.id,1):tasks.splice(0,1);
+     if(tasks.length!=null&&tasks.length !== 0){
+      tasks[tasks.length-1].id=tasks.length-1;
+     }
+     this.setState({ tasks:tasks});
+    
    }
  
   render() {
